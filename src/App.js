@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+import Game from './components/Game';
+import Score from './components/Score';
+import Gems from './components/Gems';
+import HighScore from './components/HighScore';
+
+import { RecoilRoot } from 'recoil';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <h1>Balloon inflation</h1>
+        <React.Suspense fallback={<div>Loaging...</div> }>
+          <HighScore />
+        </React.Suspense>
+        <Score />
+        <Game />
+        <Gems />
+
+      </div>
+    </RecoilRoot>
   );
 }
 
